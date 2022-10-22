@@ -8,8 +8,12 @@ const dotenv = require('dotenv')
 dotenv.config({path: 'backend/config/config.env'})
 //path archivo de configuracion
 
-//Crear el servidor
+//Crear y llamar el servidor
 //Me regresa un mensaje en pantalla, utilizando el archivo config.env
 const server = app.listen(process.env.PORT, () => {
     console.log(`Servidor iniciado en el puerto: ${process.env.PORT} en modo: ${process.env.NODE_ENV}`)
 })
+
+//Configurar dase de datos
+const connectDatabase = require("./config/database")
+connectDatabase();

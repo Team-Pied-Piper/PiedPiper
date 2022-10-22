@@ -5,10 +5,13 @@ const express = require('express')
 const router = express.Router();
 
 //Traigo los productos del repositorio (ruta del controlador) -> servicio
-const {getProducts} = require("../controllers/productsController")
+const {getProducts, newProduct} = require("../controllers/productsController")
 
-//ruta para obtener productos 
-router.route('/productos').get(getProducts)
+//Ruta para obtener productos (GET)
+router.route('/productos').get(getProducts);
+
+//Ruta creacion de un nuevo producto (POST)
+router.route('/productos/nuevo').post(newProduct);
 
 //para que se visualize desde afuera
 module.exports=router
