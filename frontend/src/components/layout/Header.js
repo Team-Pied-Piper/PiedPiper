@@ -6,7 +6,7 @@ const Header = () => {
       <nav className="navbar row">
         <div className="col-12 col-md-3">
           <div className="navbar-brand">
-            <img src="./images/PiedPiper1.png" alt="Pied Piper Store Logo"></img>
+            <img src="./images/PiedPiper1.png" width="180" height="60" class="d-inline-block align-top" alt="Pied Piper Store Logo"></img>
           </div>
         </div>
 
