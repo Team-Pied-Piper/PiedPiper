@@ -1,9 +1,12 @@
 import React, { Fragment } from "react";
+import MetaData from "./layout/MetaData";
 
 const Home = () => {
   return (
     <Fragment>
+      <MetaData title="The Best Comfortable Clothes"></MetaData>
       <h1 id="encabezado_productos">Ultimos Productos</h1>
+      
       <section id="productos" className="container mt-5">
         <div className="row">
           {/*Producto 1*/}
@@ -16,7 +19,7 @@ const Home = () => {
               ></img>
               <div className="card-body d-flex flex-column">
                 <h5 id="titulo_producto">
-                  <a href="http://localhost:3000">Hoddie Pied Piper</a>
+                  <a href="http://localhost:3000">Hoddie Pied Piper Verde</a>
                 </h5>
                 <div className="rating mt-auto">
                   <div className="rating-outer">
@@ -52,7 +55,7 @@ const Home = () => {
               ></img>
               <div className="card-body d-flex flex-column">
                 <h5 id="titulo_producto">
-                  <a href="http://localhost:3000">Hoddie Pied Piper</a>
+                  <a href="http://localhost:3000">Hoddie Pied Piper Blanco</a>
                 </h5>
                 <div className="rating mt-auto">
                   <div className="rating-outer">
@@ -63,7 +66,7 @@ const Home = () => {
                     id="No_de_opiniones"
                   >
                     {" "}
-                    5 reviews
+                    13 reviews
                   </span>
                 </div>
                 <p className="card-text">$140.000</p>
@@ -87,7 +90,7 @@ const Home = () => {
               ></img>
               <div className="card-body d-flex flex-column">
                 <h5 id="titulo_producto">
-                  <a href="http://localhost:3000">Hoddie Pied Piper</a>
+                  <a href="http://localhost:3000">Open Hoddie Pied Piper Black</a>
                 </h5>
                 <div className="rating mt-auto">
                   <div className="rating-outer">
@@ -101,7 +104,7 @@ const Home = () => {
                     3 reviews
                   </span>
                 </div>
-                <p className="card-text">$140.000</p>
+                <p className="card-text">$138.000</p>
                 <a
                   href="http://localhost:3000"
                   id="ver_producto"
@@ -123,7 +126,7 @@ const Home = () => {
               ></img>
               <div className="card-body d-flex flex-column">
                 <h5 id="titulo_producto">
-                  <a href="http://localhost:3000">Hoddie Pied Piper</a>
+                  <a href="http://localhost:3000">T-Shirt Pied Piper - Black S1</a>
                 </h5>
                 <div className="rating mt-auto">
                   <div className="rating-outer">
@@ -134,10 +137,10 @@ const Home = () => {
                     id="No_de_opiniones"
                   >
                     {" "}
-                    5 reviews
+                    25 reviews
                   </span>
                 </div>
-                <p className="card-text">$140.000</p>
+                <p className="card-text">$70.000</p>
                 <a
                   href="http://localhost:3000"
                   id="ver_producto"
