@@ -34,8 +34,7 @@ const Home = () => {
             <div className="row">
               {/*Asuma que cada elemento que encuentre es un producto (Mapeo)*/}
 
-              {productos &&
-                productos.map((producto) => (
+              {productos && productos.map((producto) => (
                   //Edito el key
                   <div
                     key={producto._id}
