@@ -37,7 +37,7 @@ export const getProductDetails = (id) => async(dispatch) => {
         dispatch({type: PRODUCT_DETAILS_REQUEST})
         
         //Axios se comunica con esta ruta en el backend
-        const {data} = await axios.get(`api/producto/:${id}`)
+        const {data} = await axios.get(`/api/producto/${id}`)
 
         dispatch({
             type: PRODUCT_DETAILS_SUCCESS,
