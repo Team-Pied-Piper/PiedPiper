@@ -255,7 +255,7 @@ footer {
 }
 
 #view_order_details {
-  background-color: #fa9c23;
+  background-color: #23fa2e;
   border-color: #fa9c23;
 }
 
@@ -486,11 +486,11 @@ footer {
 
 .sidebar-wrapper {
   display: flex;
-  width: 100%;
+  width: 225px;
   align-items: stretch;
   min-height: 100vh;
   font-weight: normal;
-
+  padding: 20px 0;
   margin-top: 0;
   height: 100%;
   left: 0;
@@ -500,7 +500,7 @@ footer {
 #sidebar {
   min-width: 100%;
   max-width: 100%;
-  background: #232f3e;
+  background: #233e2d;
   color: #fff;
   transition: all 0.3s;
 }

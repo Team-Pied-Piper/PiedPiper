@@ -1,5 +1,6 @@
 import React, { Fragment, useEffect } from "react";
 import MetaData from "./layout/MetaData";
+import "../styles/pricing.css"
 import { useDispatch, useSelector } from "react-redux";
 import { getProducts } from "../actions/productActions";
 import { Link } from "react-router-dom";
@@ -29,8 +30,11 @@ const Home = () => {
       ) : (
         <Fragment>
           <MetaData title="The Best Comfortable Clothes"></MetaData>
-          <h1 id="encabezado_productos">Ultimos Productos</h1>
-          <section id="productos" className="container mt-5">
+          <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto album py-5 bg-light text-center">
+            <h1 id="encabezado_productos" class="display-4">Best Sellers</h1>
+            <p class="lead">Aquí abajo encontrara los mejores y más vendidos productos de nuestra tienda virtual Pied Piper Store</p>
+          </div>
+          <section id="productos" className="container mt-5 text-center center-block">
             <div className="row">
               {/*Asuma que cada elemento que encuentre es un producto (Mapeo)*/}
 
@@ -38,12 +42,13 @@ const Home = () => {
                   //Edito el key
                   <div
                     key={producto._id}
-                    className="col-sm-12 col-md-6 col-lg-3 my-3"
+                    className="col-sm-12 col-md-6 col-lg-4 my-6"
                   >
-                    <div className="card-img rounded p-2">
+                    <div className="card mb-4 rounded-3 shadow-sm" style={{width: `18rem;`}}>
                       <img
-                        className="card-img-top mx-auto"
+                        className="rounded mx-auto d-block"
                         //Busca en la posicion 0 del JSON la imagen
+                        width="100%" height="350"
                         src={producto.imagen[0].url}
                         alt={producto.imagen[0].public_id}
                       ></img>
@@ -78,6 +83,7 @@ const Home = () => {
                         >
                           Ver Detalle
                         </Link>
+                        <button type="button" class="w-100 btn btn-lg btn-outline-primary text-center">Comprar</button>
                       </div>
                     </div>
                   </div>
