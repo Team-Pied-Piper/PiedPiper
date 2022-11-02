@@ -104,7 +104,7 @@ export const Dashboard = () => {
 
                 <div className="col-xl-3 col-sm-6 mb-3">
                   <div className="card border-dark mb-3 o-hidden h-100">
-                    <div className="card-body text-dark">
+                  <div className="card-body text-dark">
                       <div className="text-center card-font-size">
                         Agotados
                         <br /> <b>20</b>
