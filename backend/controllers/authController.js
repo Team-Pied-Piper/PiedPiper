@@ -1,6 +1,7 @@
 const User = require("../models/auth")
 const ErrorHandler = require("../utils/errorHandler")
 const catchAsyncErrors = require("../middleware/catchAsyncErrors")
+const tokenEnviado = require("../utils/jwtToken");
 
 //Registrar un nuevo usuario /api/usuario/registro
 
@@ -16,16 +17,7 @@ exports.registroUsuario= catchAsyncErrors(async (req, res, next) =>{
             url:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKZwmqodcPdQUDRt6E5cPERZDWaqy6ITohlQ&usqp=CAU"
         }
     })
-
-
-    const token = user.getJwtToken();
-
-
-    res.status(201).json({
-        success:true,
-        token,
-        user
-    })
+    tokenEnviado(user,201,res)
 })
 
 //Iniciar Sesion
@@ -52,13 +44,6 @@ exports.loginUser = catchAsyncErrors(async(req, res, next) => {
         return next(new ErrorHandler("Contraseña invalida", 401))
     }
 
-    const token = user.getJwtToken();
-
-
-    res.status(201).json({
-        success:true,
-        token,
-        user
-    })
+    tokenEnviado(user,200,res)
 
 } )

@@ -5,9 +5,12 @@ const express = require('express');
 const app = express();
 //Implementar el capturador de errores
 const errorMiddleware = require("./middleware/errors")
+const cookieParser = require("cookie-parser")
 
-//La aplicacion va a uilitizar JSON
+
+//La aplicacion va a uilitizar JSON - Uso de constantes importadas
 app.use(express.json());
+app.use(cookieParser());
 
 
 //Importar rutas

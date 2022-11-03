@@ -5,10 +5,11 @@ const express = require('express')
 const router = express.Router();
 
 //Traigo los productos del repositorio (ruta del controlador) -> servicio
-const {getProducts, newProduct, getProductById, updateProduct, deleteProduct} = require("../controllers/productsController")
+const {getProducts, newProduct, getProductById, updateProduct, deleteProduct} = require("../controllers/productsController");
+const { isAuthenticatedUser , authorizeRoles} = require('../middleware/auth');
 
 //Ruta para obtener productos (GET)
-router.route('/productos').get(getProducts);
+router.route('/productos').get(isAuthenticatedUser, authorizeRoles('admin') , getProducts);
 
 //Ruta para obtener producto por id (GET)
 // :id -> se vuelve parte de la estructura del require
