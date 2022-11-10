@@ -16,9 +16,11 @@ app.use(cookieParser());
 //Importar rutas
 const productos = require("./routes/products")
 const usuarios = require("./routes/auth")
+const ordenes = require("./routes/orders")
 
 app.use('/api',productos) //Pagina principal
 app.use('/api',usuarios)
+app.use('/api',ordenes)
 
 
 //MiddleWares para manejar errores
