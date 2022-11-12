@@ -5,74 +5,73 @@ import {
   PRODUCT_DETAILS_REQUEST,
   PRODUCT_DETAILS_SUCCESS,
   PRODUCT_DETAILS_FAIL,
-  CLEAR_ERRORS,
+  CLEAR_ERRORS
 } from "../constants/productConstants";
 
-//Buscar los productos
 export const productsReducer = (state = { products: [] }, action) => {
   switch (action.type) {
-    case ALL_PRODUCTS_REQUEST: {
-      return {
-        loading: true,
-        products: [],
-      };
-    }
+      case ALL_PRODUCTS_REQUEST:
+          return {
+              loading: true,
+              products: []
+          }
 
-    case ALL_PRODUCTS_SUCCESS: {
-      return {
-        loading: false,
-        productos: action.payload.productos, //Cargar productos
-        cantidad: action.payload.cantidad,
-      };
-    }
+      case ALL_PRODUCTS_SUCCESS:
+          return {
+              loading: false,
+              products: action.payload.products,
+              productsCount: action.payload.productsCount,
+              resPerPage: action.payload.resPerPage,
+              filteredProductsCount: action.payload.filteredProductsCount
+          }
 
-    case ALL_PRODUCTS_FAIL: {
-      return {
-        loading: false,
-        error: action.payload,
-      };
-    }
+      case ALL_PRODUCTS_FAIL:
+          return {
+              loading: false,
+              error: action.payload
+          }
 
-    case CLEAR_ERRORS: {
-      return {
-        ...state,
-        error: null,
-      };
-    }
+      case CLEAR_ERRORS:
+          return {
+              ...state,
+              error: null
+          }
 
-    default:
-      return state;
+
+      default:
+          return state;
   }
-};
+}
 
-//Reducer para tener todos los detalles
+//REDUCER PARA TENER TODOS LOS DETALLES
 export const productDetailsReducer = (state = { product: {} }, action) => {
   switch (action.type) {
-    case PRODUCT_DETAILS_REQUEST:
-      return {
-        ...state,
-        loading: true,
-      };
 
-    case PRODUCT_DETAILS_SUCCESS:
-      return {
-        loading: false,
-        product: action.payload,
-      };
+      case PRODUCT_DETAILS_REQUEST:
+          return {
+              ...state,
+              loading: true
+          }
 
-    case PRODUCT_DETAILS_FAIL:
-      return {
-        ...state,
-        error: action.payload,
-      };
+      case PRODUCT_DETAILS_SUCCESS:
+          return {
+              loading: false,
+              product: action.payload
+          }
 
-    case CLEAR_ERRORS:
-      return {
-        ...state,
-        error: null,
-      };
+      case PRODUCT_DETAILS_FAIL:
+          return {
+              ...state,
+              error: action.payload
+          }
 
-    default:
-      return state;
+      case CLEAR_ERRORS:
+          return {
+              ...state,
+              error: null
+          }
+
+      default:
+          return state
   }
-};
+}
