@@ -12,7 +12,7 @@ router.route('/personal').get(isAuthenticatedUser, getUserProfile)
 router.route('/personal/updatePassword').put(isAuthenticatedUser, updatePassword)
 router.route('/personal/updateProfile').put(isAuthenticatedUser, updateProfile)
 
-//rutas admin
+//Rutas Administrador
 router.route('/admin/allUsers').get(isAuthenticatedUser, authorizeRoles("admin"), getAllUsers)
 router.route('/admin/user/:id').get(isAuthenticatedUser, authorizeRoles("admin"), getUserDetails)
 router.route('/admin/updateUser/:id').put(isAuthenticatedUser, authorizeRoles("admin"), updateUser)

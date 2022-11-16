@@ -1,15 +1,22 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import MetaData from "./layout/MetaData";
-import "../styles/pricing.css"
+import "../styles/pricing.css";
 import { useDispatch, useSelector } from "react-redux";
 import { getProducts } from "../actions/productActions";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useAlert } from "react-alert";
+import Pagination from 'react-js-pagination'
 
 const Home = () => {
+
+  const params = useParams();
+  const keyword = params.keyword;
+  const [currentPage, setCurrentPage] = useState(1)
+
   //Trae lo valores de los estados
-  const { loading, productos, error } = useSelector((state) => state.products);
+  const { loading, products, error, resPerPage, productsCount } = useSelector((state) => state.products);
   const alert = useAlert();
+  
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -17,38 +24,42 @@ const Home = () => {
       return alert.error(error);
     }
 
-    dispatch(getProducts());
-    alert.success("OK");
+    dispatch(getProducts(currentPage, keyword));
+    //alert.success("OK");
     // eslint-disable-next-line
-  }, [dispatch]);
+  }, [dispatch, alert, error, currentPage, keyword]);
+
+  function setCurrentPageNo(pageNumber) {
+    setCurrentPage(pageNumber)
+  }
 
   return (
     <Fragment>
       {/*Loading*/}
       {loading ? (
-        <h1>Cargando...</h1>
+        <h1>Loading</h1>
       ) : (
         <Fragment>
           <MetaData title="The Best Comfortable Clothes"></MetaData>
-          <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto album py-5 bg-light text-center">
-            <h1 id="encabezado_productos" class="display-4">Best Sellers</h1>
-            <p class="lead">Aquí abajo encontrara los mejores y más vendidos productos de nuestra tienda virtual Pied Piper Store</p>
-          </div>
-          <section id="productos" className="container mt-5 text-center center-block">
-            <div className="row">
-              {/*Asuma que cada elemento que encuentre es un producto (Mapeo)*/}
 
-              {productos && productos.map((producto) => (
-                  //Edito el key
+          <div class="py-4 text-center">
+            <h2>Pied Piper Clothes</h2>
+            <p class="lead">
+            Aquí abajo encontrara los mejores y más vendidos productos de nuestra tienda virtual Pied Piper Store.
+            </p>
+          </div>
+
+          <section id="productos" className="container mt-5">
+            <div className="row">
+              {products &&
+                products.map((producto) => (
                   <div
                     key={producto._id}
-                    className="col-sm-12 col-md-6 col-lg-4 my-6"
+                    className="col-sm-12 col-md-6 col-lg-3 my-3"
                   >
-                    <div className="card mb-4 rounded-3 shadow-sm" style={{width: `18rem;`}}>
+                    <div className="card text-center">
                       <img
-                        className="rounded mx-auto d-block"
-                        //Busca en la posicion 0 del JSON la imagen
-                        width="100%" height="350"
+                        className="card-img-top "
                         src={producto.imagen[0].url}
                         alt={producto.imagen[0].public_id}
                       ></img>
@@ -67,29 +78,40 @@ const Home = () => {
                               }}
                             ></div>
                           </div>
-                          <span
-                            className="badge badge-pill badge-primary ml-2"
-                            id="No_de_opiniones"
-                          >
+                          <span id="No_de_opiniones">
                             {" "}
                             {producto.numCalificaciones} Reviews
                           </span>
                         </div>
-                        <p className="card-text">${producto.precio}</p>
+                        <p className="card-text ">${producto.precio}</p>
                         <Link
-                          to={`producto/${producto._id}`}
-                          id="ver_producto"
+                          to={`/producto/${producto._id}`}
+                          id="view_btn"
                           className="btn btn-block"
                         >
-                          Ver Detalle
+                          Ver detalle
                         </Link>
-                        <button type="button" class="w-100 btn btn-lg btn-outline-primary text-center">Comprar</button>
                       </div>
                     </div>
                   </div>
                 ))}
             </div>
           </section>
+
+          <div className="d-flex justify-content-center mt-5">
+            <Pagination
+              activePage={currentPage}
+              itemsCountPerPage={resPerPage}
+              totalItemsCount={productsCount}
+              onChange={setCurrentPageNo}
+              nextPageText={"Siguiente"}
+              prevPageText={"Anterior"}
+              firstPageText={"Primera"}
+              lastPageText={"Ultima"}
+              itemClass="page-item"
+              linkClass="page-link"
+            />
+          </div>
         </Fragment>
       )}
     </Fragment>

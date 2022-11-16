@@ -50,6 +50,9 @@ f
   background-color: #60b14b;
   padding: 0.4rem 1.8rem;
   font-family: calibri;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 #cart {
@@ -93,8 +96,11 @@ f
 }
 
 #view_btn {
-  background-color: #fa9c23;
+  background-color: #1f4b07be;
   color: white;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 .card-img-top {

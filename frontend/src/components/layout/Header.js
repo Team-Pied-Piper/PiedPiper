@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 import "../../styles/App.css"
 import { Link } from "react-router-dom";
+import Search from "./Search";
 
 const Header = () => {
   return (
@@ -22,20 +23,12 @@ const Header = () => {
         </div>
 
         <div className="col-12 col-md-6 mt-2 mt-md-0">
-          <div className="input-group">
-            <input
-              type="text"
-              id="search_field"
-              class="form-control"
-              placeholder="Que producto busca?"
-            ></input>
-            <div class="input-group-append">
-              <button id="search-btn" class="btn btn-success">
-                <i class="fa fa-search" aria-hidden="true"></i>
-              </button>
-            </div>
-          </div>
+          {/*Aqui va a buscar los productos*/}
+          <Search />
         </div>
+
+        {/*Login*/}
+
         <div className="col-12 col-md-3 mt-4 mt-md-0 text-center">
           <div className="ml-4 dropdown d-inline">
             <Link

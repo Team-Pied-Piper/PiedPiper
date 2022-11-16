@@ -11,12 +11,13 @@ import {
 } from '../constants/productConstants';
 
 //Metodo dispatch - Despachar una entrega
-export const getProducts = () => async(dispatch) => {
+export const getProducts = (currentPage = 1, keyword = '') => async(dispatch) => {
     try{
         dispatch({type: ALL_PRODUCTS_REQUEST})
-        
+        let link = `/api/productos?keyword=${keyword}&page=${currentPage}`
+
         //Axios se comunica con esta ruta en el backend
-        const {data} = await axios.get('api/productos')
+        const {data} = await axios.get(link)
 
         dispatch({
             type: ALL_PRODUCTS_SUCCESS,
