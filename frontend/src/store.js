@@ -3,10 +3,12 @@ import { createStore, combineReducers, applyMiddleware} from 'redux';
 import thunk from 'redux-thunk';//Ir a dar un toque para que el back reaccione
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { productsReducer, productDetailsReducer } from './reducer/productReducer';
+import { authReducer } from './reducer/userReducer';
 
 const reducer = combineReducers ({
     products: productsReducer,
-    productDetails : productDetailsReducer
+    productDetails : productDetailsReducer,
+    auth : authReducer
 })
 
 let initialState = {}

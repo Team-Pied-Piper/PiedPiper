@@ -10,11 +10,11 @@ import {
     CLEAR_ERRORS
 } from '../constants/productConstants';
 
-//Metodo dispatch - Despachar una entrega
-export const getProducts = (currentPage = 1, keyword = '') => async(dispatch) => {
+//Metodo dispatch - Enviar Producto
+export const getProducts = (currentPage = 1, keyword = '',precio) => async(dispatch) => {
     try{
         dispatch({type: ALL_PRODUCTS_REQUEST})
-        let link = `/api/productos?keyword=${keyword}&page=${currentPage}`
+        let link = `/api/productos?keyword=${keyword}&page=${currentPage}&${currentPage}&precio[gte]=${precio[0]}&precio[lte=${precio[1]}]`
 
         //Axios se comunica con esta ruta en el backend
         const {data} = await axios.get(link)
@@ -32,7 +32,7 @@ export const getProducts = (currentPage = 1, keyword = '') => async(dispatch) =>
 }
 
 
-//Metodo dispatch - Despachar una entrega
+//Productos en detalle
 export const getProductDetails = (id) => async(dispatch) => {
     try{
         dispatch({type: PRODUCT_DETAILS_REQUEST})

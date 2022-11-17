@@ -22,14 +22,15 @@ const Header = () => {
           </div>
         </div>
 
-        <div className="col-12 col-md-6 mt-2 mt-md-0">
+        <div className="col-12 col-md-5 mt-2 mt-md-0">
           {/*Aqui va a buscar los productos*/}
           <Search />
         </div>
 
         {/*Login*/}
-
-        <div className="col-12 col-md-3 mt-4 mt-md-0 text-center">
+        <div className="col-12 col-md-4 mt-4 mt-md-0 text-center">
+        {/* Boton Login */}
+        <Link to="/login" className="btn btn-success" id="login_btn">Login</Link>
           <div className="ml-4 dropdown d-inline">
             <Link
               to="#!"
