@@ -6,14 +6,11 @@ import { getProducts } from "../actions/productActions";
 import { Link, useParams } from "react-router-dom";
 import { useAlert } from "react-alert";
 import Pagination from 'react-js-pagination'
-import Slider from "rc-slider"
-import 'rc-slider/assets/index.css'
 
 const Home = () => {
 
   const params = useParams();
   const keyword = params.keyword;
-  const [precio, setPrecio] = useState([1000,400000])
   const [currentPage, setCurrentPage] = useState(1)
 
   //Trae lo valores de los estados
@@ -27,10 +24,10 @@ const Home = () => {
       return alert.error(error);
     }
 
-    dispatch(getProducts(currentPage, keyword,precio));
+    dispatch(getProducts(currentPage, keyword));
     //alert.success("OK");
     // eslint-disable-next-line
-  }, [dispatch, alert, error, currentPage, keyword, precio]);
+  }, [dispatch, alert, error, currentPage, keyword]);
 
   function setCurrentPageNo(pageNumber) {
     setCurrentPage(pageNumber)
@@ -48,8 +45,7 @@ const Home = () => {
           <div class="py-4 text-center">
             <h2>Pied Piper Clothes</h2>
             <p class="lead">
-              Aquí abajo encontrara los mejores y más vendidos productos de
-              nuestra tienda virtual Pied Piper Store.
+            Aquí abajo encontrara los mejores y más vendidos productos de nuestra tienda virtual Pied Piper Store.
             </p>
           </div>
 
@@ -99,26 +95,6 @@ const Home = () => {
                     </div>
                   </div>
                 ))}
-
-              <Slider
-                range
-                className = 't-slider'
-                marks={{
-                  100:`$1000`,
-                  400000:`$400000`
-                }}
-                min={1000}
-                max={400000}
-                defaultValue={[1000,400000]}
-                tipFormatter={value => `$${value}`}
-                tipProps={{
-                  placement:'bottom',
-                  prefixCls: 'rc-slider-tooltip',
-                  visible: true
-                }}
-                value={precio}
-                onChange={precio => setPrecio(precio)}
-              ></Slider>
             </div>
           </section>
 

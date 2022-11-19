@@ -6,11 +6,11 @@ import Sidebar from './Sidebar'
 import { useAlert } from 'react-alert'
 import { useDispatch, useSelector } from 'react-redux'
 import { getProducts } from '../../actions/productActions'
-import {Link } from "react-router-dom"
+import { Link } from "react-router-dom"
 
 const ProductsList = () => {
     const { loading, productos, error} = useSelector(state=> state.products)
-    const alert= useAlert();
+    const alert = useAlert();
 
     const dispatch = useDispatch();
     useEffect(() => {

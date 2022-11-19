@@ -11,7 +11,7 @@ import ProductsList from './components/admin/ProductsList';
 import NewProduct from './components/admin/NewProduct';
 import Cart from './components/cart/Cart';
 import { Login } from './components/user/Login';
-import { Register } from './components/user/Register';
+
 
 function App() {
   return (
@@ -29,7 +29,7 @@ function App() {
           <Route path="/search/:keyword" element={<Home />}/>
           <Route path="/carrito" element={<Cart />}/>
           <Route path="/login" element={<Login />}/>
-          <Route path='/register' element={<Register />}/>
+          
         </Routes>
       </div>
       <Footer />

@@ -8,7 +8,7 @@ import { authReducer } from './reducer/userReducer';
 const reducer = combineReducers ({
     products: productsReducer,
     productDetails : productDetailsReducer,
-    auth : authReducer
+    authUser : authReducer
 })
 
 let initialState = {}
